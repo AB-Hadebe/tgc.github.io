@@ -30,14 +30,14 @@ if (typeof window.ENV_CONFIG !== 'undefined' && window.ENV_CONFIG.firebase) {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase App Check
-const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider(
-    window.ENV_CONFIG?.recaptcha?.siteKey || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
-  ),
-  isTokenAutoRefreshEnabled: true,
-  debug: window.location.hostname === 'localhost'
-});
+// App Check is disabled for development/testing
+// const appCheck = initializeAppCheck(app, {
+//   provider: new ReCaptchaV3Provider(
+//     window.ENV_CONFIG?.recaptcha?.siteKey || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+//   ),
+//   isTokenAutoRefreshEnabled: true,
+//   debug: window.location.hostname === 'localhost'
+// });
 
 // Export Firebase services
 export const auth = getAuth(app);
